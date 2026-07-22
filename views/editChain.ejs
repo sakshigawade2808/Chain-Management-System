@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Chain</title>
+</head>
+<body>
+
+    <h1>Edit Chain</h1>
+
+    <form action="/chains/edit/<%= chain.chain_id %>" method="POST">
+
+        <label>Company Name</label><br>
+        <input
+            type="text"
+            name="company_name"
+            value="<%= chain.company_name %>"
+            required
+        >
+        <br><br>
+
+        <label>GSTN Number</label><br>
+        <input
+            type="text"
+            name="gstn_number"
+            value="<%= chain.gstn_number %>"
+            required
+        >
+        <br><br>
+
+        <label>Select Group</label><br>
+
+        <select name="group_id" required>
+
+            <% groups.forEach(group => { %>
+
+                <option
+                    value="<%= group.group_id %>"
+                    <%= group.group_id == chain.group_id ? "selected" : "" %>>
+                    <%= group.group_name %>
+                </option>
+
+            <% }) %>
+
+        </select>
+
+        <br><br>
+
+        <button type="submit">Update Chain</button>
+
+        <a href="/">Cancel</a>
+
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Chain</title>
+</head>
+<body>
+
+<h1>Add Chain</h1>
+
+<form action="/chains/add" method="POST">
+
+    <label>Company Name</label><br>
+    <input type="text" name="company_name"><br><br>
+
+    <label>GSTN Number</label><br>
+    <input type="text" name="gstn_number"><br><br>
+
+    <label>Select Group</label><br>
+
+    <select name="group_id">
+
+        <% groups.forEach(group => { %>
+
+            <option value="<%= group.group_id %>">
+                <%= group.group_name %>
+            </option>
+
+        <% }) %>
+
+    </select>
+
+    <br><br>
+
+    <button type="submit">Save</button>
+
+</form>
+
+</body>
+</html>
